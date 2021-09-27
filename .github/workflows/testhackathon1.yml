@@ -3,6 +3,8 @@ on:
   push:
     branches:
     - master
+  workflow_dispatch:
+  
 env:
   AZURE_WEBAPP_NAME: testhackathon1
   AZURE_WEBAPP_PACKAGE_PATH: ImageProcessingApp\published
