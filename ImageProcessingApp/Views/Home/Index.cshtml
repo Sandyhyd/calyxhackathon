@@ -1,0 +1,94 @@
+﻿@model ImageProcessingApp.Models.UploadFileModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @*<form enctype="multipart/form-data" asp-action="UploadFile">
+
+    </form>*@
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <label>Eye</label>
+                <input type="radio" name="ImageOf" value="Eye" asp-for="ImageOf" checked="checked" />
+                <label>Chest</label>
+                <input type="radio" name="ImageOf" value="Chest" asp-for="ImageOf" />
+                @*<input type="radio" name="ImageOf" value="Tumor" asp-for="ImageOf" />
+                <input type="radio" name="ImageOf" value="Chest" asp-for="ImageOf" />*@
+            </div>
+            <div class="col-md-10">
+                @Html.Label("File", "Upload Image File")
+                <input type="file" asp-for="File" name="File" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+
+        <div class="col-md-10">
+            <div class="col-md-offset-2">
+                <table height="100px" style="visibility:@Model.IsVisible">
+                    <tr>
+                        <th colspan="3">Image</th>
+                        <th>Prediction</th>
+                        <th>Score</th>
+                    </tr>
+                    <tr>
+                        @if (@ViewData["Prediction"] != null)
+                        {
+                            <td colspan="3" width="25%">
+                                <img src="~/images/@ViewData["DisplayImagePath"]" alt="Image" style="height:70%;width:70%;" />
+                            </td>
+                            <td>
+                                @ViewData["Prediction"]
+                            </td>
+                            <td>
+                                @ViewData["Score"]
+                            </td>
+                        }
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+        <br /><br /><br />
+        @if (@ViewData["Prediction"] != null)
+        {
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <th align="center">
+                            Summary Of Image Analysis
+                        </th>
+                        
+                    </tr>
+                    
+                </thead>
+                <tr>
+                    <td align="center">
+                        <div class="col-md-offset-2">
+
+                            <p>
+                                Selected image of type @Model.ImageOf has been detected as @ViewData["Prediction"].ToString() .
+                            </p>
+
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        }
+
+
+    </div>
+    }
+</div>
