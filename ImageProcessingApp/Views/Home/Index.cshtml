@@ -1,45 +1,58 @@
 ﻿@model ImageProcessingApp.Models.UploadFileModel
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
+<div class="">
     @*<form enctype="multipart/form-data" asp-action="UploadFile">
 
-    </form>*@
+        </form>*@
     @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <label>Eye</label>
-                <input type="radio" name="ImageOf" value="Eye" asp-for="ImageOf" checked="checked" />
-                <label>Chest</label>
-                <input type="radio" name="ImageOf" value="Chest" asp-for="ImageOf" />
-                @*<input type="radio" name="ImageOf" value="Tumor" asp-for="ImageOf" />
-                <input type="radio" name="ImageOf" value="Chest" asp-for="ImageOf" />*@
+    <div class="form-horizontal" style="padding: 0 20%;">
+        <div class="form-group" style="background:#f6f6f6; padding : 20px 0px; border-radius: 6.8px; box-shadow: 0 0 4.6px 0 rgb(0 0 0 / 24%);">
+            <div style="display:@(Model.IsVisible ? "none" : "block") ">
+                <div class="header-logo row" style="text-align:center;margin: 0 4%;">
+                    <img src="/images/web/scan-icon.png" alt="Screening Checklist for Visitors and Employees" width="155" class="header-logo-top" style="pointer-events: none;width: 57px;">
+                    <h4 style="line-height: 50px;margin: 4px 0 0 0;">
+                        Medical Image
+                    </h4>
+                </div>
+                <div class="row">
+                    <div class="col tr">
+                        Type of scan :
+                    </div>
+                    <div class="col">
+                        <input id="radChest" type="radio" name="ImageOf" value="Phenomia" asp-for="ImageOf" checked="checked" />
+                        <label for="radChest" class="rad-label">Chest</label>
+                        <input id="radEye" type="radio" name="ImageOf" value="Eye" asp-for="ImageOf" />
+                        <label for="radEye" class="rad-label">Eye</label>
+                        <input id="radChest" type="radio" name="ImageOf" value="Phenomia" asp-for="ImageOf" />
+                        <label for="radChest" class="rad-label">Brain</label>
+                        @*<input type="radio" name="ImageOf" value="Tumor" asp-for="ImageOf" />
+                    <input type="radio" name="ImageOf" value="Chest" asp-for="ImageOf" />*@
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col tr">
+                        <label>Upload Image :</label>
+                    </div>
+                    <div class="col">
+                        <input type="file" asp-for="File" name="File" required />
+                    </div>
+                </div>
+                <div class="col-md-offset-2" style="margin-top:25px; text-align:center;">
+                    <input type="submit" value="Submit" class="btn btn-default" />
+                </div>
             </div>
-            <div class="col-md-10">
-                @Html.Label("File", "Upload Image File")
-                <input type="file" asp-for="File" name="File" required />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Submit" class="btn btn-default" />
-            </div>
-        </div>
-
-        <div class="col-md-10">
-            <div class="col-md-offset-2">
-                <table height="100px" style="visibility:@Model.IsVisible">
+            <div class="row" style="padding : 12px;display:@(Model.IsVisible ? "block" : "none")">
+                <table height="100px">
                     <tr>
                         <th colspan="3">Image</th>
                         <th>Prediction</th>
-                        <th>Score</th>
                     </tr>
                     <tr>
                         @if (@ViewData["Prediction"] != null)
@@ -50,43 +63,42 @@
                             <td>
                                 @ViewData["Prediction"]
                             </td>
-                            <td>
-                                @ViewData["Score"]
-                            </td>
                         }
                     </tr>
                 </table>
+                <br /><br /><br />
+                @if (@ViewData["Prediction"] != null)
+                {
+                    <table width="100%">
+                        <thead>
+                            <tr>
+                                <th align="center">
+                                    Summary Of Image Analysis
+                                </th>
 
+                            </tr>
+
+                        </thead>
+                        <tr>
+                            <td align="center">
+                                <div class="col-md-offset-2">
+
+                                    <p>
+                                        Selected image of type @Model.ImageOf has been detected as @ViewData["Prediction"].ToString() .
+                                    </p>
+
+
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                }
+                <div class="col-md-offset-2" style="margin-top:25px; text-align:center;">
+                    <a href="/" class="btn btn-default">Back</a>
+                </div>
             </div>
         </div>
-        <br /><br /><br />
-        @if (@ViewData["Prediction"] != null)
-        {
-            <table width="100%">
-                <thead>
-                    <tr>
-                        <th align="center">
-                            Summary Of Image Analysis
-                        </th>
-                        
-                    </tr>
-                    
-                </thead>
-                <tr>
-                    <td align="center">
-                        <div class="col-md-offset-2">
-
-                            <p>
-                                Selected image of type @Model.ImageOf has been detected as @ViewData["Prediction"].ToString() .
-                            </p>
-
-
-                        </div>
-                    </td>
-                </tr>
-            </table>
-
-        }
 
 
     </div>

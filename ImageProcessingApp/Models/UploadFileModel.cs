@@ -14,6 +14,6 @@ namespace ImageProcessingApp.Models
         public string ImageOf { get; set; }
         public string DisplayImagePath { get; set; }
         // Rest of model details
-        public string IsVisible { get; set; } = "hidden";
+        public bool IsVisible { get; set; } = false;
     }
 }

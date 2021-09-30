@@ -3,7 +3,82 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ImageProcessingApp</title>
+    <title>@ViewData["Title"] - Image Processing</title>
+    <link rel="icon" type="image/png" href="~/images/web/favicon.ico">
+    <style>
+        .calyx-logo {
+            width: 88px;
+            height: 24px;
+        }
+
+        .tm {
+            display: flex;
+            margin: 5px 10px 0 3px;
+        }
+
+            .tm img {
+                width: 3.5px;
+                height: 5px;
+                margin: 0.5px;
+            }
+
+        .at-logo span {
+            font-size: 17px;
+            margin: 1px 0;
+        }
+
+        .main-logo {
+            color: #410099;
+            display: inherit;
+            margin-right: 10px;
+            margin: 8px 10px;
+            font-weight: 500;
+        }
+
+        .btn.btn, .btn.btn:active, .btn.btn:hover {
+            background: #410099;
+            color: #fff;
+            border-radius: 0;
+            padding: 5px 20px;
+        }
+
+        .rad-label {
+            padding: 5px;
+            margin-right: 50px;
+        }
+
+        input[type=file] {
+            border-style: dashed;
+            border-width: thin;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+            input[type=file]::file-selector-button {
+                padding: .2em .4em;
+                border-radius: 0;
+                background-color: #410099;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+            }
+
+                input[type=file]::file-selector-button:hover {
+                    background-color: #410099;
+                }
+        .col.col {
+            display: block;
+        }
+                .row.row {width : 100%; margin:15px 5px}
+        .tr {
+            text-align: right;
+            line-height: 30px;
+            width: 25% !IMPORTANT;
+            float: left;
+            overflow: hidden;
+            max-width: 30% !IMPORTANT;
+        }
+    </style>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -11,20 +86,17 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ImageProcessingApp</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+                <div class="main-logo">
+                    <div class="calyx-logo">
+                        <img alt="CALYX" type="image/svg+xml" src="~/images/web/CALYX-Blue.svg" class="calyx-logo" />
+                    </div>
+                    <div class="tm">
+                        <img alt="t" type="image/svg+xml" src="~/images/web/t-Blue.svg" />
+                        <img alt="m" type="image/svg+xml" src="~/images/web/m-Blue.svg" />
+                    </div>
+                    <div class="at-logo">
+                        <span>Image Processing</span>
+                    </div>
                 </div>
             </div>
         </nav>

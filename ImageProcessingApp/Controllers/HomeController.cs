@@ -52,7 +52,7 @@ namespace ImageProcessingApp.Controllers
             ViewData.Add("Prediction", result2.Prediction);
             ViewData.Add("Score", result2.Score[0]);
             ViewData.Add("DisplayImagePath", model.File.FileName);
-            model.IsVisible = "visible";
+            model.IsVisible = true;
 
             return View(model);
         }
