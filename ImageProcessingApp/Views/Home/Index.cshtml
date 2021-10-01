@@ -26,11 +26,11 @@
                         Type of scan :
                     </div>
                     <div class="col">
-                        <input id="radChest" type="radio" name="ImageOf" value="Phenomia" asp-for="ImageOf" checked="checked" />
+                        <input id="radChest" type="radio" name="ImageOf" value="Chest" asp-for="ImageOf" checked="checked" />
                         <label for="radChest" class="rad-label">Chest</label>
                         <input id="radEye" type="radio" name="ImageOf" value="Eye" asp-for="ImageOf" />
                         <label for="radEye" class="rad-label">Eye</label>
-                        <input id="radChest" type="radio" name="ImageOf" value="Phenomia" asp-for="ImageOf" />
+                        <input id="radChest" type="radio" name="ImageOf" value="Brain" asp-for="ImageOf" />
                         <label for="radChest" class="rad-label">Brain</label>
                         @*<input type="radio" name="ImageOf" value="Tumor" asp-for="ImageOf" />
                     <input type="radio" name="ImageOf" value="Chest" asp-for="ImageOf" />*@
@@ -80,25 +80,22 @@
 
                         </thead>
                         <tr>
-                            <td align="center">
-                                <div class="col-md-offset-2">
-
-                                    <p>
-                                        Selected image of type @Model.ImageOf has been detected as @ViewData["Prediction"].ToString() .
+                            <td>
+                                <div class="">
+                                    <p style="margin: 4px 0px;">
+                                        Selected @Model.ImageOf image is detected as @ViewData["Prediction"].ToString().
                                     </p>
-
-
                                 </div>
                             </td>
                         </tr>
                     </table>
 
-                }
-                <div class="col-md-offset-2" style="margin-top:25px; text-align:center;">
-                    <a href="/" class="btn btn-default">Back</a>
+                        }
+                        <div class="col-md-offset-2" style="margin-top:25px; text-align:center;">
+                            <a href="/" class="btn btn-default">Back</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
 
     </div>
